@@ -1,0 +1,25 @@
+<head>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="target">Test</div>
+</body>
+<script type="text/javascript">		
+	var shortenUrl = function(longUrl) {
+    return $.ajax(console.log({
+      longUrl: longUrl
+    }), {
+    type: 'POST',
+    url: "https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyBYJ2yb4j2nraAZQRM59RZRcj2t908rT5s",
+    data: '{"longUrl": "http://www.google.com/"}', // <-- string here
+    dataType: 'json',
+    success: function(response) {
+      $("#target").html(response.id)
+    },
+    contentType: 'application/json'
+  });
+};
+
+	$(document).ready(shortenUrl("https://www.google.com"));
+</script>
+
